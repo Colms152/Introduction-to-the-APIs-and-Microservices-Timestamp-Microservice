@@ -30,7 +30,7 @@ app.get("/api/timestamp/", (req, res) => {
 
 app.get("/api/timestamp/:date_string", (req, res) => {
   var dateString = req.params.date_string;
-
+  var dateObject = new Date(dateString);
   //A 4 digit number is a valid ISO-8601 for the beginning of that year
   //5 digits or more must be a unix time, until we reach a year 10,000 problem
   if (/\d{5,}/.test(dateString)) {
@@ -39,14 +39,8 @@ app.get("/api/timestamp/:date_string", (req, res) => {
     res.json({ unix: dateString, utc: new Date(dateInt).toUTCString() });
   }
 
-  
-
-  var dateObject = new Date(dateString);
-
   if (dateObject.toString() === "Invalid Date") {
     res.json({ error : "Invaid Date" });
-  } else {
-    res.json({ "unix": dateObject.valueOf(), "utc" : dateObject.toUTCString() });
   }
 });
 
