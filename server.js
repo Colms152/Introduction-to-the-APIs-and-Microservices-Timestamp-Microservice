@@ -26,7 +26,7 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/timestamp/", (req, res) => {
   var today = Date.now();
-  res.json({ unix: today.valueOf(), utc: today.toUTCString() });
+  res.json({ unix: today, utc: new Date(today).toUTCString() });
 });
 
 app.get("/api/timestamp/:date_string", (req, res) => {
