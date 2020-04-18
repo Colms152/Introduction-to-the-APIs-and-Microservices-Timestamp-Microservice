@@ -25,14 +25,13 @@ app.get("/api/hello", function (req, res) {
 });
 
 app.get("/api/timestamp/", (req, res) => {
-  var today = Date.now()
+  var today = Date.now();
   res.json({ unix: today.valueOf(), utc: today.toUTCString() });
 });
 
 app.get("/api/timestamp/:date_string", (req, res) => {
   var dateString = req.params.date_string;
   var dateObject = new Date(dateString);
-  var today = 
   //A 4 digit number is a valid ISO-8601 for the beginning of that year
   //5 digits or more must be a unix time, until we reach a year 10,000 problem
   if (/\d{5,}/.test(dateString)) {
