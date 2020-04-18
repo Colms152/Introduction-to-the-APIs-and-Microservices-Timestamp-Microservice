@@ -26,7 +26,7 @@ app.get("/api/hello", function (req, res) {
 
 app.get("/api/timestamp/", (req, res) => {
   var today = Date.now() + (60*60);
-  var dayint = parseInt(today) + (60*60);
+  var dayint = parseInt(today) + ((60*10^3)*(60));
   res.json({ unix: today, utc: new Date(dayint).toUTCString() });
 });
 
