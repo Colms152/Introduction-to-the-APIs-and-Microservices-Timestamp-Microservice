@@ -39,16 +39,14 @@ app.get("/api/timestamp/:date_string", (req, res) => {
     res.json({ unix: dateString, utc: new Date(dateInt).toUTCString() });
   }
 
-  if(dateString == null){
-    res.json({ unix: Date.now(), utc: Date() });
-  }
+  
 
   var dateObject = new Date(dateString);
 
   if (dateObject.toString() === "Invalid Date") {
-    res.json({ error: "Invaid Date" });
+    res.json({ error : "Invaid Date" });
   } else {
-    res.json({ unix: dateObject.valueOf(), utc: dateObject.toUTCString() });
+    res.json({ "unix": dateObject.valueOf(), "utc" : dateObject.toUTCString() });
   }
 });
 
