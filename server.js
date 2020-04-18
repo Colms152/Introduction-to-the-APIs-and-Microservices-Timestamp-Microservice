@@ -29,7 +29,6 @@ app.get("/api/timestamp/", (req, res) => {
 });
 
 app.get("/api/timestamp/:date", (req, res) => {
-  let dateString = req.params.date;
 
 });
 
